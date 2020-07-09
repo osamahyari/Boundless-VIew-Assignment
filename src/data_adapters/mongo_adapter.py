@@ -1,13 +1,13 @@
 import json
-import sys
-import pymongo
 import os
-sys.path.append(".")
-from data_feeder.data_adapter import DataAdapter
 from urllib.parse import quote_plus
 
+import pymongo
 
-class MongoAdapter(DataAdapter):
+from data_adapters.base_adapter import BaseAdapter
+
+
+class MongoAdapter(BaseAdapter):
 
     def __init__(self, host, port, db_name, user=None, password=None):
         self.host = host
@@ -34,17 +34,13 @@ class MongoAdapter(DataAdapter):
         try:
             print(self.client.server_info())
         except pymongo.errors.PyMongoError as exc:
-            # import ipdb; ipdb.set_trace()
-            print("Connection Error:", exc)
+            print("Error Connecting:", exc)
             print("Host: {host}, Port: {port}, Username: *** , Password: ***".format(**params))
 
     def clean(self):
         self.client.drop_database(self.db_name)
 
-    def feed(self, collection_names, folder_name):
-
-
-
+    def feed_images(self, ):
         arr = os.listdir()
         file_path = "../json_files/instances_val.json"
         with open(file_path, "r", encoding='utf-8') as f:
@@ -66,9 +62,3 @@ class MongoAdapter(DataAdapter):
     #         else:
     #             collection = db[collection_name]
     #             collection.insert_one(record)
-
-
-
-x = MongoAdapter("localhost", "27017", "test_db2", "blah", "blabla")
-y = ["test1", "test2"]
-x.setup(y)
