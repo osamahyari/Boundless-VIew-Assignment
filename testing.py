@@ -1,7 +1,4 @@
-from .data_adapter import DataAdapter
-from .mongo_adapter import MongoAdapter
-import pymongo
-from urllib.parse import quote_plus
+from src.data_adapters.mongo_adapter import MongoAdapter
 
 x = MongoAdapter("localhost", "27017", "test_db")
 y = ["test1", "test2"]

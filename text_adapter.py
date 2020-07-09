@@ -1,6 +1,5 @@
 import json
-import pymongo
-from .data_adapter import DataAdapter
+from src.data_adapters.data_adapter import DataAdapter
 
 
 class TextAdapter(DataAdapter):
