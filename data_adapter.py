@@ -1,7 +1,6 @@
 from abc import ABC
 
 
-
 class DataAdapter(ABC):
 
     def __init__(self):
