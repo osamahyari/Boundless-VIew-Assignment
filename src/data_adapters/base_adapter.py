@@ -7,11 +7,11 @@ class BaseAdapter(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def setup(self, db_name):
+    def setup(self):
         pass
 
     @abc.abstractmethod
-    def clean(self, db_name):
+    def clean(self):
         pass
 
     @abc.abstractmethod

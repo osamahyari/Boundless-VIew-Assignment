@@ -3,20 +3,17 @@ from data_adapters.base_adapter import BaseAdapter
 
 class TextAdapter(BaseAdapter):
 
-    # list_of_collection_names = ["languages", "text_types", "fields", "categories", "tags", "images"]
-    # file_path = "../json_files/instances_val.json"
-    # with open(file_path, "r", encoding='utf-8') as f:
-    #     json_data = json.load(f)
+    def setup(self):
+        raise NotImplementedError
 
-    def setup(self, collection_names, data):
-        for col in collection_names:
-            print(col + "Collection has been created\n")
+    def clean(self):
+        raise NotImplementedError
 
-    def clean(self, dbname):
-        print(dbname + "Database has been deleted\n")
+    def feed_images(self, data):
+        raise NotImplementedError
 
-    # def feed(self, collection_names, json_data):
-    #     for col in collection_names:
-    #         data = json_data[col]
-    #         for dicts in data:
-    #             ()
+    def feed_annotations(self, data):
+        raise NotImplementedError
+
+    def feed_meta(self, data):
+        raise NotImplementedError

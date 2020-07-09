@@ -5,6 +5,7 @@ ENV dbhost host.docker.internal
 ENV dbport 27017
 ENV dbusername unset
 ENV dbpass unset
+ENV cleandb 1
 ENV dbname cheques
 
 RUN pip install pymongo
@@ -15,4 +16,4 @@ COPY src/* src/
 COPY json_files data_files/
 COPY run-feeder.sh .
 
-CMD ["sh", "-c", "/usr/osama/run-feeder.sh ${dryrun} ${dbhost} ${dbport} ${dbusername} ${dbpass} ${dbname} json_files"]
+CMD ["sh", "-c", "/usr/osama/run-feeder.sh ${dryrun} ${dbhost} ${dbport} ${dbusername} ${dbpass} ${dbname} ${cleandb} json_files"]
